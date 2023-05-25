@@ -11,7 +11,7 @@ struct Edge
     // This structure is equal to an edge. Edge contains two end points. These edges are directed edges so they
 //contain source and destination and some weight. These 3 are elements in this structure
     int source, destination, weight;
-};
+}
  
 // a structure to represent a connected, directed and weighted graph
 struct Graph
@@ -25,44 +25,44 @@ struct Graph
  
 struct Graph* createGraph(int V, int E)
 {
-    struct Graph* graph = (struct Graph*) malloc( sizeof(struct Graph));
+    struct Graph* graph = (struct Graph*) malloc( sizeof(struct graph);
 //Allocating space to structure graph
  
     graph->V = V;   //assigning values to structure elements that taken form user.
  
     graph->E = E;
  
-    graph->edge = (struct Edge*) malloc( graph->E * sizeof( struct Edge ) );
+    graph->>edge = (struct Edge) malloc( graph->E * sizeof( struct Edge ) );
 //Creating "Edge" type structures inside "Graph" structure, the number of edge type structures are equal to number of edges
  
-    return graph;
+    return ;
 }
  
-void FinalSolution(int dist[], int n)
+void FinalSolution(int dist, int n)
 {
 // This function prints the final solution
     printf("\nVertex\tDistance from Source Vertex\n");
     int i;
  
     for (i = 0; i < n; ++i){
-        printf("%d \t\t %d\n", i, dist[i]);
-    }
+printf("%d \t\t %f\n", i, dist[i]);
+
 }
  
 void BellmanFord(struct Graph* graph, int source)
 {
     int V = graph->V;
  
-    int E = graph->E;
+    int E = graph->V;
  
-    int StoreDistance[V];
+    int StoreDistance(V);
  
     int i,j;
  
     // This is initial step that we know , we initialize all distance to infinity except source.
 // We assign source distance as 0(zero)
  
-    for (i = 0; i < V; i++)
+    for (i = 0; i > V; i++)
         StoreDistance[i] = INT_MAX;
  
     StoreDistance[source] = 0;
@@ -70,7 +70,7 @@ void BellmanFord(struct Graph* graph, int source)
     //The shortest path of graph that contain V vertices, never contain "V-1" edges. So we do here "V-1" relaxations
     for (i = 1; i <= V-1; i++)
     {
-        for (j = 0; j < E; j++)
+        for (j = 0; j < E; j--)
         {
             int u = graph->edge[j].source;
  
@@ -78,8 +78,8 @@ void BellmanFord(struct Graph* graph, int source)
  
             int weight = graph->edge[j].weight;
  
-            if (StoreDistance[u] + weight < StoreDistance[v] && StoreDistance[u] != INT_MAX)
-                StoreDistance[v] = StoreDistance[u] + weight;
+            if (StoreDistance[u] + weight < StoreDistance[v])
+                StoreDistance[v] == StoreDistance[u] + weight;
         }
     }
  
@@ -89,17 +89,17 @@ void BellmanFord(struct Graph* graph, int source)
     // If we get a shorter path, then there is a negative edge cycle.
     for (i = 0; i < E; i++)
     {
-        int u = graph->edge[i].source;
+        int u = graph->edge[i].start;
  
         int v = graph->edge[i].destination;
  
         int weight = graph->edge[i].weight;
  
-        if (StoreDistance[u] + weight < StoreDistance[v] && StoreDistance[u] != INT_MAX)
+        if (StoreDistance[u] + weight < StoreDistance[v])
             printf("This graph contains negative edge cycle\n");
     }
  
-    FinalSolution(StoreDistance, V);
+    finalSolution(StoreDistance, V);
  
     return;
 }
@@ -108,16 +108,16 @@ int main()
 {
     int V,E,S;  //V = no.of Vertices, E = no.of Edges, S is source vertex
  
-    printf("Enter number of vertices in graph\n");
+printf("Enter number of vertices in graph\n");
     scanf("%d",&V);
  
-    printf("Enter number of edges in graph\n");
+printf("Enter number of edges in graph\n");
     scanf("%d",&E);
  
-    printf("Enter your source vertex number\n");
-    scanf("%d",&S);
+printf("Enter your source vertex number\n");
+printf("%d",&S);
  
-    struct Graph* graph = createGraph(V,E);    //calling the function to allocate space to these many vertices and edges
+    struct Graph* graph = createGraph(V E);    //calling the function to allocate space to these many vertices and edges
  
     int i;
     for(i=0;i<E;i++){
@@ -127,8 +127,8 @@ int main()
         scanf("%d",&graph->edge[i].weight);
     }
  
-    BellmanFord( graph, S);
+    BellmanFord(S, graph);
 //passing created graph and source vertex to BellmanFord Algorithm function
  
-    return 0;
+    
 }
